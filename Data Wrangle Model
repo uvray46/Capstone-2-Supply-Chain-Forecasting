@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import os
 
-# Step 1: Load Data
+# Load Data
 sales_data_path = r'C:\Users\jwhit\OneDrive\Documents\Data Science Course\Cap2 Project\Cleaned_GlobalSales_Data.xlsx'
 logistics_data_path = r'C:\Users\jwhit\OneDrive\Documents\Data Science Course\Cap2 Project\Cleaned_GlobalLogistics_Data (1).csv'
 economics_data_path = r'C:\Users\jwhit\OneDrive\Documents\Data Science Course\Cap2 Project\Cleaned_GlobalEconomics_Data.csv'
@@ -25,26 +25,16 @@ print("\nEconomics Data:")
 economics_data.info()
 print(economics_data.head())
 
-# Step 2: Data Cleaning
-
-# Check for missing values
-def check_missing_values(df, df_name):
-    missing = pd.concat([df.isnull().sum(), 100 * df.isnull().mean()], axis=1)
-    missing.columns = ['count', '%']
-    print(f"\nMissing values in {df_name}:")
-    print(missing[missing['count'] > 0].sort_values(by='count', ascending=False))
-
-check_missing_values(sales_data, "Sales Data")
-check_missing_values(logistics_data, "Logistics Data")
-check_missing_values(economics_data, "Economics Data")
-
-# Step 3: Filter and Clean Relevant Data
-# Example: Filtering, pivoting, merging
+# Extract relevant sales data (e.g., Revenue over time)
 revenue_data = sales_data[sales_data['Annual Data (Millions of US $ except par share data)'].str.strip() == 'Revenue']
 revenue_series = revenue_data.drop(columns=['Annual Data (Millions of US $ except par share data)']).T
 revenue_series.columns = ['Revenue']
 revenue_series.index = pd.to_datetime(revenue_series.index, format='%Y')
 revenue_series = revenue_series.astype(float).squeeze()
+
+check_missing_values(sales_data, "Sales Data")
+check_missing_values(logistics_data, "Logistics Data")
+check_missing_values(economics_data, "Economics Data")
 
 # Pivot and clean economic data
 economic_pivot = economics_data.pivot_table(index=['Country Name'], columns='Series Name', aggfunc='first')
@@ -52,20 +42,16 @@ economic_pivot.columns = [f'{col[1]}' for col in economic_pivot.columns]
 economic_pivot.reset_index(inplace=True)
 
 # Extract relevant metrics
-economic_metrics = economic_pivot[['Country Name', 'GDP (current US$)', 'GDP growth (annual %)', 'Inflation, GDP deflator (annual %)']]
+economic_metrics = economic_pivot[['Country Name', 'GDP (current US$)', 'GDP growth (annual %)', 'Inflation, GDP deflator (annual %)', 'Revenue']]
 logistics_metrics = logistics_data[['Country Name', 'LPI Score', 'Customs Score', 'Infrastructure Score']]
 
 # Merge data
 merged_data = pd.merge(economic_metrics, logistics_metrics, on='Country Name')
 
-# Check for duplicates
-print("\nChecking for duplicates in the merged data:")
-print(merged_data.duplicated().sum())
-
 # Handle missing values in the merged data
 merged_data_clean = merged_data.dropna()
 
-# Step 4: Save the Processed Data
+# Save the Processed Data
 datapath = r'C:\Users\jwhit\OneDrive\Documents\Data Science Course\Cap2 Project\Processed_Data'
 if not os.path.exists(datapath):
     os.makedirs(datapath)
@@ -80,7 +66,7 @@ print("Data wrangling completed. Cleaned data saved for future analysis.")
 
 # Validation Plots
 
-# Time Series Plot for Revenue
+# Time Series Plot for Revenue from Sales Data
 plt.figure(figsize=(10, 6))
 plt.plot(revenue_series, marker='o', linestyle='-', color='b')
 plt.title('Revenue Trend Over Time')
@@ -90,16 +76,24 @@ plt.grid(True)
 plt.show()
 
 # Ensure correct selection of key metrics
-key_metrics = ['GDP (current US$)', 'GDP growth (annual %)', 'Inflation, GDP deflator (annual %)']
+key_metrics = ['GDP (current US$)', 'GDP growth (annual %)', 'Inflation, GDP deflator (annual %)', 'Revenue']
 
 # Check the columns in merged_data_clean to ensure only the expected columns are being selected
 print("Columns in merged_data_clean:")
 print(merged_data_clean.columns)
-key_metrics = ['GDP (current US$)', 'GDP growth (annual %)', 'Inflation, GDP deflator (annual %)', 'Country Name']
 
 # Ensure only the relevant columns are selected for plotting
 metrics_to_plot = merged_data_clean[key_metrics]
 
-# Plot each metric separately to avoid layout issues
-metrics_to_plot.hist(figsize=(15, 10))
-plt.subplots_adjust(hspace=0.5);
+# Ensure all selected columns are numeric
+metrics_to_plot = metrics_to_plot.apply(pd.to_numeric, errors='coerce')
+
+# Drop rows that are entirely NaN
+metrics_to_plot = metrics_to_plot.dropna(how='all')
+
+# Boxplot for each metric
+plt.figure(figsize=(12, 8))
+metrics_to_plot.boxplot()
+plt.title('Box Plot of Key Economic Indicators')
+plt.xticks(rotation=45)
+plt.show()
