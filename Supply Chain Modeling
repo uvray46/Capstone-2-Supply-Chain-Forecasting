@@ -1,0 +1,122 @@
+# Imports
+import pandas as pd
+import numpy as np
+import os
+import pickle
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn import __version__ as sklearn_version
+from sklearn.model_selection import cross_validate
+
+# Load Model
+expected_model_version = '1.0'
+model_path = r'C:\Users\jwhit\OneDrive\Documents\Data Science Course\Cap2 Project\models\cap2_pricing_model.pkl'
+if os.path.exists(model_path):
+    with open(model_path, 'rb') as f:
+        model = pickle.load(f)
+    if model.version != expected_model_version:
+        print("Expected model version doesn't match version loaded")
+    if model.sklearn_version != sklearn_version:
+        print("Warning: model created under different sklearn version")
+else:
+    print("Expected model not found")
+
+# Load Data
+data_path = r'C:\Users\jwhit\OneDrive\Documents\Data Science Course\Cap2 Project\Processed_Data\Merged_Wrangle_Data(EDA).csv'
+merged_data = pd.read_csv(data_path)
+
+# Check the data and model features
+print("Data columns:", merged_data.columns)
+print("Model expected features:", model.X_columns)
+
+# Prepare X and y
+X = merged_data[model.X_columns]  # Use the features expected by the model
+y = merged_data['Revenue']  # Replace with target variable
+
+# Check for NaN values in y
+if y.isnull().any():
+    print(f"Found {y.isnull().sum()} NaN values in the target variable. Removing these rows.")
+    X = X[~y.isnull()]
+    y = y.dropna()
+
+# Fit the model
+model.fit(X, y)
+
+# Cross-validation to evaluate model performance
+cv_results = cross_validate(model, X, y, scoring='neg_mean_absolute_error', cv=5, n_jobs=-1)
+cv_results['test_score']
+
+# Calculate mean and standard deviation of MAE
+mae_mean, mae_std = np.mean(-1 * cv_results['test_score']), np.std(-1 * cv_results['test_score'])
+print(f"Mean MAE: {mae_mean:.2f}, Std MAE: {mae_std:.2f}")
+
+# Scenario modeling setup
+expected_revenue = 500_000  # Hypothetical number of transactions or sales
+
+# Define the predict_increase function
+def predict_increase(features, deltas):
+    """Increase in modelled revenue by applying delta to feature values."""
+    modified_data = X.copy()
+    for feature, delta in zip(features, deltas):
+        modified_data[feature] += delta
+    return model.predict(modified_data).mean() - model.predict(X).mean()
+
+# Scenario 1: Increasing GDP growth by 1%
+scenario1_increase = predict_increase(['GDP growth (annual %)'], [1.0])
+revenue1_increase = expected_revenue * scenario1_increase
+print(f'Scenario 1: Increase GDP growth by 1% leads to an estimated increase in revenue of ${revenue1_increase:.2f}')
+
+
+# Scenario 2: Improving LPI Score by 0.5
+scenario2_increase = predict_increase(['LPI Score'], [0.5])
+revenue2_increase = expected_revenue * scenario2_increase
+print(f'Scenario 2: Improve LPI Score by 0.5 leads to an estimated increase in revenue of ${revenue2_increase:.2f}')
+
+# Visualize scenario impacts
+scenarios = ['Scenario 1: GDP growth +1%', 'Scenario 2: LPI Score +0.5']
+revenue_changes = [revenue1_increase, revenue2_increase]
+
+plt.figure(figsize=(10, 5))
+sns.barplot(x=scenarios, y=revenue_changes)
+plt.title('Estimated Revenue Increase by Scenario')
+plt.xlabel('Scenarios')
+plt.ylabel('Revenue Increase ($)')
+plt.show()
+
+plt.figure(figsize=(10, 6))
+plt.hist(merged_data['LPI Score'], bins=20, color='green', edgecolor='black')
+plt.title('Distribution of LPI Score by Country')
+plt.xlabel('LPI Score')
+plt.ylabel('Frequency')
+plt.grid(True)
+plt.show()
+
+# Customs Score vs. Revenue
+plt.figure(figsize=(10, 6))
+plt.hist(merged_data['Customs Score'], bins=20, color='orange', edgecolor='black')
+plt.title('Distribution of Customs Score by Country')
+plt.xlabel('Customs Score')
+plt.ylabel('Frequency')
+plt.grid(True)
+plt.show()
+
+plt.figure(figsize=(10, 6))
+plt.hist(merged_data['GDP growth (annual %)'], bins=20, color='red', edgecolor='black')
+plt.title('Distribution of GDP Growth (annual %) by Country')
+plt.xlabel('GDP Growth (annual %)')
+plt.ylabel('Frequency')
+plt.grid(True)
+plt.show()
+
+# Inflation
+plt.figure(figsize=(10, 6))
+plt.hist(merged_data['Inflation, GDP deflator (annual %)'], bins=20, color='purple', edgecolor='black')
+plt.title('Distribution of Inflation (GDP Deflator, annual %) by Country')
+plt.xlabel('Inflation (GDP Deflator, annual %)')
+plt.ylabel('Frequency')
+plt.grid(True)
+plt.show()
+
+
+
+
