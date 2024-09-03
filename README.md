@@ -63,6 +63,7 @@ The Exploratory Data Analysis revealed significant disparities in key economic a
 
 # 5. Predictions
 Several predictions and insights can be made:
+
 **Economic Performance and Logistics Efficiency:** The positive, though complex, relationship between GDP and Revenue suggests that countries with higher economic output tend to generate more revenue. However, the variability indicates that other factors, possibly including the efficiency of logistics networks (as indicated by LPI scores), play a significant role. Thus, we can predict that improving logistics infrastructure could potentially enhance economic performance and revenue generation, especially in countries where these metrics are currently lagging.
 
 **GDP Growth and Inflation Trends:** The distribution of GDP growth shows a normal spread, indicating that most countries are growing at a moderate pace, with few experiencing extremely high or low growth. This suggests that countries with outlier GDP growth rates (both positive and negative) might face unique challenges or opportunities. For instance, countries with extremely high growth could be at risk of overheating, leading to potential inflationary pressures, whereas those with negative growth may need to implement significant economic reforms.
