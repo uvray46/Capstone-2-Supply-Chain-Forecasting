@@ -7,15 +7,22 @@ In today’s volatile global market, understanding the performance of supply cha
 This project integrates multiple datasets to create a comprehensive view of global supply chain operations.
 
 # Data Sources
-> * Global Economic Data: Includes key economic metrics such as GDP, GDP growth rate, inflation, and revenue, covering multiple countries from 2014 to 2023.
-> * Global Logistics Data: Contains logistics performance indicators like LPI score, infrastructure score, customs efficiency, and more, providing insights into each country’s logistical capabilities.
-> * Merged Dataset: The datasets were meticulously merged to align economic indicators with corresponding logistics data, facilitating a holistic analysis of the supply chain landscape.
+> * Global Sales Data: The financial performance data, particularly focusing on company revenues, was obtained from [Macrotrends](https://www.macrotrends.net/stocks/charts/WMT/walmart/financial-statements?q=logistics), which provides comprehensive financial statement data.
+> * Global Logistics Data: Data regarding logistics performance indicators were sourced from the World Bank’s Logistics Performance Index (LPI). The LPI is a benchmarking tool developed by the World Bank, and the data can be accessed at [World Bank LPI](https://lpi.worldbank.org/report).
+> * Global Economic Data: The economic indicators, such as GDP and inflation rates, were extracted from the World Bank's DataBank. This platform offers a wide array of economic data across different countries, accessible via [World Bank DataBank](https://databank.worldbank.org/reports.aspx?source=2&series=GC.REV.XGRT.GD.ZS&country=).
 
-To view the datasets and import reports, refer to the links below:
 
-> * Global Economic Data
-> * Global Logistics Data
-> * Merged Dataset Import Report
+# Data Cleaning
+
+[Data Cleaning Report](https://docs.google.com/document/d/1JaN7TdmWdP24HP3p41c5L7W9maZpKmTYIkcn9hVI0D8/edit)
+
+During the data cleaning process, several challenges came up that required careful handling to ensure the quality and reliability of the final dataset. The three main problems were:
+
+* **Inconsistent Data Representation:** The datasets contained various symbols and non-numeric characters (e.g., "..", text in numeric columns) that led to incorrect data types and potential analysis errors. These were replaced or removed to standardize the data.
+
+* **Missing Data:** Significant portions of the data, especially in the economic indicators, were missing or incomplete. A combination of median imputation and removal of excessively incomplete rows or columns was used to address this issue, preserving the integrity of the remaining data.
+
+* **Merging and Integration Issues:** When merging datasets from different sources, discrepancies in country names and other categorical identifiers posed a challenge. Careful data normalization and manual correction of these discrepancies were necessary to ensure accurate integration of the datasets.
 
 # Data Overview
 The merged dataset contains a combination of economic and logistics variables that are crucial for modeling. Key features include:
@@ -28,7 +35,13 @@ The merged dataset contains a combination of economic and logistics variables th
 > * Revenue
 
 # 2. Method
-A structured approach was taken to process, analyze, and model the data for achieving the project objectives.
+Three main analytical methods were employed to understand supply chain performance:
+
+1. **Correlation Analysis:** This technique was utilized to identify and evaluate the linear relationships between key variables such as economic indicators, logistics metrics, and corporate financial performance. By generating a correlation matrix, we could pinpoint significant correlations—like the strong relationship between logistics infrastructure and GDP growth—which served as a foundation for deeper analysis.
+
+2. **Random Forest Regression:** To capture the complex, non-linear interactions between variables, we applied Random Forest Regression. This method allowed us to model the influence of various factors, including economic and logistics metrics, on corporate revenue. The Random Forest model was particularly effective in highlighting the critical role of logistics infrastructure as a predictor of financial performance.
+
+3. **Simulation of Strategic Scenarios:** Leveraging the Random Forest model, we simulated various strategic scenarios to predict the potential impacts of different decisions, such as infrastructure improvements or economic policy changes. This simulation provided a practical framework for forecasting revenue outcomes, offering valuable insights into how specific actions could enhance supply chain performance and economic resilience.
 
 # Data Wrangling
 > * Merging Datasets: The economic and logistics datasets were merged on the 'Country Name' column, ensuring that all relevant features were aligned.
