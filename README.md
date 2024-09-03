@@ -43,11 +43,6 @@ Three main analytical methods were employed to understand supply chain performan
 
 3. **Simulation of Strategic Scenarios:** Leveraging the Random Forest model, various strategic scenarios were simulated to predict the potential impacts of different decisions, such as infrastructure improvements or economic policy changes. This simulation provided a practical framework for forecasting revenue outcomes, offering valuable insights into how specific actions could enhance supply chain performance and economic resilience.
 
-# Data Wrangling
-> * Merging Datasets: The economic and logistics datasets were merged on the 'Country Name' column, ensuring that all relevant features were aligned.
-> * Handling Missing Data: Missing values in the dataset were managed using median imputation for numerical features and appropriate strategies for categorical data.
-> * Feature Engineering: New features were engineered by combining existing variables to better capture the nuances of the global supply chain. For example, a composite score was created by averaging the LPI and infrastructure scores.
-
 # Exploratory Data Analysis (EDA)
 EDA provided critical insights into the data distribution, relationships between variables, and potential data quality issues.
 
@@ -89,8 +84,6 @@ A robust machine learning framework was established to predict revenue and optim
 > * Mean Absolute Error (MAE): The MAE for the random forest model was X, indicating the average magnitude of errors in revenue predictions.
 > * R-squared: The R-squared value of Y highlighted the model’s ability to explain the variance in revenue based on the selected features.
 
-*For a detailed analysis of the models and their performance, see the ML Notebook.
-
 # 5. Results
 The final model demonstrated strong predictive capabilities, offering valuable insights into revenue forecasting and supply chain optimization.
 
@@ -108,16 +101,3 @@ This project sets the stage for future enhancements and more sophisticated analy
 > * Incorporating Additional Data: Future work could include additional economic indicators, such as trade volumes and foreign direct investment (FDI), to further enhance model accuracy.
 > * Advanced Modeling Techniques: Exploring models like XGBoost, LightGBM, or neural networks could provide even better predictions and uncover deeper insights.
 > * Real-time Analytics: Implementing the model in a real-time analytics platform could enable continuous monitoring and optimization of supply chain processes.
-
-# 7. Final Predictions
-The final model is ready to be used for revenue forecasting and supply chain optimization across different countries.
-
-# Usage Guidelines
-> * Input Requirements: The model requires up-to-date economic and logistics data to generate accurate predictions.
-> * Expected Output: Predictions will include estimated revenue, along with insights into the most influential factors driving economic performance.
-
-*For the final predictions, view the Predictions Notebook.
-
-# 8. Appendix
-> * Code Repository: Access the full project code on GitHub.
-> * Additional Visualizations: Explore more plots and visual insights in the Appendix.
