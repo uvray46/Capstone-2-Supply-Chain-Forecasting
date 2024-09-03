@@ -37,11 +37,11 @@ The merged dataset contains a combination of economic and logistics variables th
 # 2. Method
 Three main analytical methods were employed to understand supply chain performance:
 
-1. **Correlation Analysis:** This technique was utilized to identify and evaluate the linear relationships between key variables such as economic indicators, logistics metrics, and corporate financial performance. By generating a correlation matrix, we could pinpoint significant correlations—like the strong relationship between logistics infrastructure and GDP growth—which served as a foundation for deeper analysis.
+1. **Correlation Analysis:** This technique was utilized to identify and evaluate the linear relationships between key variables such as economic indicators, logistics metrics, and corporate financial performance. By generating a correlation matrix, pinpointing significant correlations—like the strong relationship between logistics infrastructure and GDP growth—were simplified, which served as a foundation for deeper analysis.
 
-2. **Random Forest Regression:** To capture the complex, non-linear interactions between variables, we applied Random Forest Regression. This method allowed us to model the influence of various factors, including economic and logistics metrics, on corporate revenue. The Random Forest model was particularly effective in highlighting the critical role of logistics infrastructure as a predictor of financial performance.
+2. **Random Forest Regression:** To capture the complex, non-linear interactions between variables, Random Forest Regression was applied. This method allowed the model to influence of various factors, including economic and logistics metrics, on corporate revenue. The Random Forest model was particularly effective in highlighting the critical role of logistics infrastructure as a predictor of financial performance.
 
-3. **Simulation of Strategic Scenarios:** Leveraging the Random Forest model, we simulated various strategic scenarios to predict the potential impacts of different decisions, such as infrastructure improvements or economic policy changes. This simulation provided a practical framework for forecasting revenue outcomes, offering valuable insights into how specific actions could enhance supply chain performance and economic resilience.
+3. **Simulation of Strategic Scenarios:** Leveraging the Random Forest model, various strategic scenarios were simulated to predict the potential impacts of different decisions, such as infrastructure improvements or economic policy changes. This simulation provided a practical framework for forecasting revenue outcomes, offering valuable insights into how specific actions could enhance supply chain performance and economic resilience.
 
 # Data Wrangling
 > * Merging Datasets: The economic and logistics datasets were merged on the 'Country Name' column, ensuring that all relevant features were aligned.
