@@ -72,13 +72,6 @@ Several predictions and insights can be made:
 
 **Revenue Concentration:** The highly skewed distribution of Revenue indicates that a few countries dominate global revenue generation. This concentration suggests that economic power is not evenly distributed, and that smaller economies might struggle to compete. Future trends could see these dominant economies pulling further ahead unless smaller economies can find niche markets or improve their economic and logistical efficiency.
 
-# Revenue Prediction
-> * Model Accuracy: The random forest model achieved an MAE of X and an R-squared of Y on the test set, indicating high accuracy and reliability in predictions.
-> * Feature Importance: The model identified GDP, infrastructure score, and LPI score as the most critical factors influencing revenue, emphasizing the need for robust economic and logistical frameworks.
-# Key Visualizations
-> * Feature Importance Plot: Visualized the importance of each feature in the random forest model, confirming the dominance of economic indicators in revenue prediction.
-> * Revenue vs. Infrastructure Score: The histogram and line chart visualizations of revenue vs. infrastructure score across different countries provided clear evidence of the positive impact of infrastructure on economic performance.
-
 # 6. Future Improvements
 > * Incorporating Additional Data: Future work could include additional economic indicators, such as trade volumes and foreign direct investment (FDI), to further enhance model accuracy.
 > * Advanced Modeling Techniques: Exploring models like XGBoost, LightGBM, or neural networks could provide even better predictions and uncover deeper insights.
