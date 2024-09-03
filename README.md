@@ -43,31 +43,10 @@ Three main analytical methods were employed to understand supply chain performan
 
 3. **Simulation of Strategic Scenarios:** Leveraging the Random Forest model, various strategic scenarios were simulated to predict the potential impacts of different decisions, such as infrastructure improvements or economic policy changes. This simulation provided a practical framework for forecasting revenue outcomes, offering valuable insights into how specific actions could enhance supply chain performance and economic resilience.
 
-# Exploratory Data Analysis (EDA)
-EDA provided critical insights into the data distribution, relationships between variables, and potential data quality issues.
-
-> * Descriptive Statistics: Summary statistics helped in understanding the central tendency, dispersion, and shape of the data distribution.
-> * Correlation Analysis: A correlation matrix was used to identify strong relationships between features, guiding the selection of predictors for modeling.
-> * Visualization: Various visualizations such as histograms, box plots, and scatter plots were employed to explore data patterns and outliers.
-# Detailed Analysis of Key Findings
-> * GDP and Revenue: A positive correlation between GDP and revenue was observed, indicating that higher economic output is generally associated with increased revenue.
-> * Infrastructure and Revenue: Countries with better infrastructure tend to have higher revenues, suggesting that efficient logistics operations contribute significantly to economic performance.
-> * Inflation Trends: The inflation rate showed varying effects on revenue across different countries, highlighting the importance of macroeconomic stability in supply chain performance.
-
-*For a detailed report on the data cleaning process, refer to the Data Cleaning Report.*
-
 # 3. EDA
-The exploratory data analysis phase was crucial for understanding the underlying structure of the data and identifying potential modeling challenges.
+The Exploratory Data Analysis revealed significant disparities in key economic and logistics metrics across countries, with GDP and Revenue distributions showing high skewness, indicating substantial variability in economic performance. The pairwise relationships between metrics, such as GDP and Revenue, demonstrated positive but complex interactions, while other correlations, like GDP Growth and LPI Score, showed little to no direct correlation.
 
-# Key Visualizations and Findings
-> * Distribution Analysis: Histograms and box plots were used to examine the distribution of key metrics. The data revealed some skewness, particularly in the revenue and inflation data, necessitating transformation before modeling.
-> * Correlation Heatmap: A heatmap was generated to visualize the correlations between the selected features. Strong correlations were found between GDP and revenue, as well as between infrastructure score and LPI score, indicating potential multicollinearity.
-> * Scatter Plot Insights: Scatter plots helped identify linear and non-linear relationships between variables. For instance, the scatter plot of infrastructure score vs. revenue showed a clear upward trend, emphasizing the role of logistics in driving economic success.
-# Detailed Feature Analysis
-> * GDP Growth and Infrastructure Score: A scatter plot revealed that countries with moderate GDP growth tend to have varying infrastructure scores, suggesting that infrastructure investments might not always keep pace with economic growth.
-> * Revenue Over Time: An analysis of revenue trends over the years for different countries showed that while some countries experienced steady growth, others saw fluctuations likely due to external shocks or policy changes.
-
-*Explore the EDA findings in detail here.
+![keyeconmetrics](https://github.com/user-attachments/assets/44456dc5-7e2c-4054-9aba-49540f788a76)
 
 # 4. Algorithms & Machine Learning
 A robust machine learning framework was established to predict revenue and optimize decision-making in the supply chain industry.
