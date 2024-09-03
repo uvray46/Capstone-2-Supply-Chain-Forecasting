@@ -1,7 +1,7 @@
 ![supplychain_coverphoto](https://github.com/user-attachments/assets/b078b9a2-bb04-4c00-9614-ecc051b43972)
 # Global Supply Chain Optimization Project
 
-The global supply chain is the backbone of international trade, enabling the flow of goods and services across borders. Given its complexity and the increasing interdependencies between countries, optimizing supply chain processes is crucial for businesses aiming to stay competitive. This project leverages economic and logistics data to build predictive models that enhance decision-making and revenue forecasting in the supply chain industry.
+In today’s volatile global market, understanding the performance of supply chains is crucial for businesses striving to remain competitive. As global disruptions continue to challenge the stability of supply networks, the ability to evaluate and understand key performance indicators becomes essential as mention by [Deloitte](https://www2.deloitte.com/us/en/insights/industry/manufacturing/global-supply-chain-resilience-amid-disruptions.html). This project focuses on assessing the current state of supply chain performance by analyzing various economic and logistical metrics. Through comprehensive data modeling, we aim to provide insights into how supply chains have performed under recent pressures, offering a clearer picture of their strengths and vulnerabilities in the face of ongoing challenges.
 
 # 1. Data
 This project integrates multiple datasets to create a comprehensive view of global supply chain operations.
@@ -10,6 +10,7 @@ This project integrates multiple datasets to create a comprehensive view of glob
 > * Global Economic Data: Includes key economic metrics such as GDP, GDP growth rate, inflation, and revenue, covering multiple countries from 2014 to 2023.
 > * Global Logistics Data: Contains logistics performance indicators like LPI score, infrastructure score, customs efficiency, and more, providing insights into each country’s logistical capabilities.
 > * Merged Dataset: The datasets were meticulously merged to align economic indicators with corresponding logistics data, facilitating a holistic analysis of the supply chain landscape.
+
 To view the datasets and import reports, refer to the links below:
 
 > * Global Economic Data
