@@ -49,8 +49,6 @@ The Exploratory Data Analysis revealed significant disparities in key economic a
 ![keyeconmetrics](https://github.com/user-attachments/assets/44456dc5-7e2c-4054-9aba-49540f788a76)
 
 # 4. Algorithms & Machine Learning
-A robust machine learning framework was established to predict revenue and optimize decision-making in the supply chain industry.
-
 # Model Selection and Justification
 > * Baseline Model (Dummy Regressor): A dummy regressor was used to establish a baseline, setting a benchmark for model performance. This model simply predicted the mean revenue, providing a reference point for evaluating more complex models.
 > * Linear Regression: Chosen for its simplicity and interpretability, the linear regression model was the first step in understanding the linear relationships between the predictors and the target variable (revenue).
@@ -65,7 +63,6 @@ A robust machine learning framework was established to predict revenue and optim
 
 # 5. Results
 The final model demonstrated strong predictive capabilities, offering valuable insights into revenue forecasting and supply chain optimization.
-
 # Revenue Prediction
 > * Model Accuracy: The random forest model achieved an MAE of X and an R-squared of Y on the test set, indicating high accuracy and reliability in predictions.
 > * Feature Importance: The model identified GDP, infrastructure score, and LPI score as the most critical factors influencing revenue, emphasizing the need for robust economic and logistical frameworks.
@@ -73,10 +70,7 @@ The final model demonstrated strong predictive capabilities, offering valuable i
 > * Feature Importance Plot: Visualized the importance of each feature in the random forest model, confirming the dominance of economic indicators in revenue prediction.
 > * Revenue vs. Infrastructure Score: The histogram and line chart visualizations of revenue vs. infrastructure score across different countries provided clear evidence of the positive impact of infrastructure on economic performance.
 
-# 6. Future Work
-This project sets the stage for future enhancements and more sophisticated analyses.
-
-# Potential Enhancements
+# 6. Future Improvements
 > * Incorporating Additional Data: Future work could include additional economic indicators, such as trade volumes and foreign direct investment (FDI), to further enhance model accuracy.
 > * Advanced Modeling Techniques: Exploring models like XGBoost, LightGBM, or neural networks could provide even better predictions and uncover deeper insights.
 > * Real-time Analytics: Implementing the model in a real-time analytics platform could enable continuous monitoring and optimization of supply chain processes.
