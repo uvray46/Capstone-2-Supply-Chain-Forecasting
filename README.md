@@ -1,5 +1,5 @@
 ![supplychain_coverphoto](https://github.com/user-attachments/assets/b078b9a2-bb04-4c00-9614-ecc051b43972)
-# Global Supply Chain Optimization Project
+# Global Supply Chain Optimization
 
 In today’s volatile global market, understanding the performance of supply chains is crucial for businesses striving to remain competitive. As global disruptions continue to challenge the stability of supply networks, the ability to evaluate and understand key performance indicators becomes essential as mention by [Deloitte](https://www2.deloitte.com/us/en/insights/industry/manufacturing/global-supply-chain-resilience-amid-disruptions.html). This project focuses on assessing the current state of supply chain performance by analyzing various economic and logistical metrics. Through comprehensive data modeling, we aim to provide insights into how supply chains have performed under recent pressures, offering a clearer picture of their strengths and vulnerabilities in the face of ongoing challenges.
 
